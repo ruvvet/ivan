@@ -33,7 +33,7 @@ export default function PriceChart({
             domain={["auto", "auto"]}
           />
           <Tooltip
-            formatter={(value: number) => [`$${value.toFixed(2)} ${unit}`, "Price"]}
+            formatter={(value) => [`$${Number(value).toFixed(2)} ${unit}`, "Price"]}
             contentStyle={{
               borderRadius: 0,
               fontSize: 11,

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useStore } from "../store";
 
 export default function Projects() {
-  const { projects, spendForProject, addProject } = useStore();
+  const { projects, spendForProject } = useStore();
   const [showNew, setShowNew] = useState(false);
 
   return (

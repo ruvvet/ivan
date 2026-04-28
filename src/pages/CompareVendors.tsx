@@ -222,7 +222,7 @@ export default function CompareVendors() {
                     tickFormatter={(v) => `$${v}`}
                   />
                   <Tooltip
-                    formatter={(value: number) => `$${value.toFixed(2)}`}
+                    formatter={(value) => `$${Number(value).toFixed(2)}`}
                     contentStyle={{
                       borderRadius: 0,
                       fontSize: 11,

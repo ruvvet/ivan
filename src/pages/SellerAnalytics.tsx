@@ -109,7 +109,7 @@ export default function SellerAnalytics() {
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
               />
               <Tooltip
-                formatter={(value: number) => `$${value.toLocaleString()}`}
+                formatter={(value) => `$${Number(value).toLocaleString()}`}
                 contentStyle={{
                   borderRadius: 0,
                   fontSize: 11,
