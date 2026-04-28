@@ -62,7 +62,13 @@ A demo B2B construction-materials marketplace. All data is in-memory — refresh
 
 ### Demo combos to try
 
-- **End-to-end procurement:** Sign in as Apex → bulk-paste 3 SKUs → checkout with PO + project link → *Submit for approval* → `/approvals` → approve → spend rises in project, credit deducts.
+- **End-to-end procurement:** Sign in as Apex → in cart, paste this takeoff into the bulk-add box:
+  ```
+  REBAR-#5-20FT, 240
+  LMB-2X4-8-SPF, 600
+  DRY-1/2-4X8, 80
+  ```
+  → checkout with PO + project link → *Submit for approval* → `/approvals` → approve → spend rises in project, credit deducts.
 - **RFQ flow:** Add to cart → Open RFQ → select 4 vendors → watch the bell → visit quote → accept lowest.
 - **Watchlist trigger:** Watch any item → set threshold above current price → green **Below threshold** pill lights up.
 - **Seller round-trip:** Switch to seller → create a new listing → switch back to buyer → find it in the catalog → buy it → switch to seller → see it appear in analytics.
