@@ -62,16 +62,65 @@ A demo B2B construction-materials marketplace. All data is in-memory — refresh
 
 ### Demo combos to try
 
-- **End-to-end procurement:** Sign in as Apex → in cart, paste this takeoff into the bulk-add box:
-  ```
-  REBAR-#5-20FT, 240
-  LMB-2X4-8-SPF, 600
-  DRY-1/2-4X8, 80
-  ```
-  → checkout with PO + project link → *Submit for approval* → `/approvals` → approve → spend rises in project, credit deducts.
-- **RFQ flow:** Add to cart → Open RFQ → select 4 vendors → watch the bell → visit quote → accept lowest.
-- **Watchlist trigger:** Watch any item → set threshold above current price → green **Below threshold** pill lights up.
-- **Seller round-trip:** Switch to seller → create a new listing → switch back to buyer → find it in the catalog → buy it → switch to seller → see it appear in analytics.
+Every combo is self-contained and starts from a fresh load (in-memory state resets on refresh).
+
+**1. End-to-end procurement (PO + approval + project spend)**
+1. **Sign in** → Business tab → choose **Apex** ($1k auto-approve threshold) → any password.
+2. Go to **Cart**, paste this takeoff into the bulk-add box:
+   ```
+   REBAR-#5-20FT, 240
+   LMB-2X4-8-SPF, 600
+   DRY-1/2-4X8, 80
+   ```
+3. **Add to cart** — three line items appear, subtotal is well over $1k.
+4. **Checkout** → choose *Purchase order / Net terms* → attach to project **Main St Renovation** → pick a job-site address tile → place order.
+5. The order routes to *pending approval* — open `/approvals`, click **Approve**.
+6. Reload `/projects` to see the spend bar on Main St Renovation move; reload sign-in to see Apex's available credit drop.
+
+**2. RFQ to multiple vendors**
+1. Add any product to cart (e.g., REBAR-#5-20FT).
+2. In cart, click **Open RFQ →** → keep all 4 vendors selected → submit.
+3. You're taken to the new quote. Watch the bell — vendor responses arrive over 1.5–7s with synthetic prices.
+4. Once all four respond, the **Lowest** badge appears on the cheapest.
+5. Click **Accept** on a vendor row to lock in the quote.
+
+**3. Watchlist price-drop alert**
+1. Open any product detail → click **★ Watch**.
+2. Go to `/watchlist` → set the **Notify if &lt;** threshold to a value *above* the current price (e.g. if list price is $19.25, set threshold to $20).
+3. Green **● Below threshold** pill lights up immediately.
+
+**4. Vendor swap via Compare**
+1. From the catalog, open a product that's sold by multiple vendors — `REBAR-#5-20FT` is carried by three.
+2. Click **Compare vendors** on the listing.
+3. Scan the table: price, lead time, rating per vendor.
+4. Pick a different vendor row and **Add to cart** — same SKU, different seller.
+
+**5. Reorder a past purchase**
+1. Place any order first (combo #1 works).
+2. Go to `/orders` → find the order in the history table → click **Reorder**.
+3. Every line item from that order is re-added to your current cart at the same quantities.
+4. **Checkout** to place it again.
+
+**6. Project budget gauge fills up**
+1. Go to `/projects` → open **Warehouse Slab Repair** (smallest budget at $8k, easiest to move).
+2. Click back to the catalog → buy something → at checkout, attach the order to that project.
+3. Return to `/projects` → the spend percentage and bar reflect the new total.
+
+**7. Out-of-stock → substitute**
+1. Open product `DRY-1/2-4X8` (1/2" drywall — seeded out of stock).
+2. Scroll to the amber **Alternates available** panel — 4 in-stock products from the same category.
+3. Click any alternate → land on its detail page → **Add to cart** instead.
+
+**8. Notification deep-link**
+1. Click the bell icon in the header.
+2. Click the pre-seeded **back in stock** notification.
+3. It deep-links you to the listing in question — buy it or watch it from there.
+
+**9. Seller round-trip**
+1. Use the role switch in the header (or mobile drawer) → flip to **Seller**.
+2. `/seller/new` → fill in title, SKU, price, etc. → create.
+3. Flip back to **Buyer** → search the catalog by your new SKU → buy one.
+4. Flip to seller again → `/seller/analytics` → your new listing shows in the top SKUs and revenue chart.
 
 ## Deployment notes
 
