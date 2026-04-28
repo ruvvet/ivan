@@ -2,6 +2,34 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Example flows to try
+
+A demo B2B marketplace. All data is in-memory — refreshing resets state. Any password works on the business sign-in.
+
+**1. Quick buy as an individual**
+Catalog → click any product → **Add to cart** → **Cart** → **Checkout** → fill card details → see order confirmation, then visit **Orders**.
+
+**2. Buy on net terms as a business**
+**Sign in** → Business tab → pick a business → catalog → product → Add to cart → **Checkout** → choose *Purchase order / Net terms*. Watch the business's available credit shrink on the login screen next time.
+
+**3. Compare vendors for the same product**
+Open a product that has multiple sellers → **Compare vendors** → review the price-history chart and pick a different seller.
+
+**4. Request a quote**
+Product detail → **Request quote** → fill the form → see it appear under **Quotes**, then open the quote detail to accept or counter.
+
+**5. Track spend against a project**
+**Projects** → create a new project → during checkout, attach the order to that project → return to the project to see spend roll up.
+
+**6. Approvals (business only)**
+Place an order over the business's auto-approve threshold → it lands in **Approvals** → approve or reject it there.
+
+**7. Watchlist**
+Catalog or product detail → bookmark a product → **Watchlist** to see saved items.
+
+**8. Seller side**
+**Seller dashboard** → **New listing** to add a product → **Analytics** to see (mock) revenue and order charts. Edit an existing listing from the dashboard.
+
 ## Deployment notes
 
 Currently configured for **GitHub Pages** at `https://ruvvet.github.io/ivan/`:
