@@ -2,6 +2,19 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Deployment notes
+
+Currently configured for **GitHub Pages** at `https://ruvvet.github.io/ivan/`:
+
+- `vite.config.ts` sets `base: '/ivan/'` for the subpath.
+- `src/App.tsx` uses `HashRouter` because GH Pages can't serve client-side routes on refresh.
+
+**Before deploying to a real cloud host (Vercel, Netlify, custom domain, etc.):**
+
+- Switch `HashRouter` back to `BrowserRouter` in `src/App.tsx` so URLs are clean (no `#`).
+- Remove or change `base` in `vite.config.ts` (set to `'/'` or delete the line) unless still served from a subpath.
+
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
