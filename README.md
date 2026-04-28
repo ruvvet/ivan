@@ -12,7 +12,7 @@ A demo B2B construction-materials marketplace. All data is in-memory — refresh
    Group orders, quotes, and addresses by named jobs. Each project has a budget vs. spend gauge that updates as you place orders. 3 pre-seeded.
 
 2. **RFQ / Quotes** (`/quotes`)
-   From cart, hit **Open RFQ** → pick vendors → submit. Vendors auto-respond over 1.5–8s with synthetic prices and lead times. Sorted by price, lowest flagged. Notifications fire as responses arrive.
+   From cart, hit **Open RFQ** → pick vendors → submit. Vendors auto-respond over 1.5–7s with synthetic prices and lead times. Sorted by price, lowest flagged. Notifications fire as responses arrive.
 
 3. **Bulk add** (in cart)
    Paste a takeoff list (SKU, qty per line) → parses, adds to cart, reports any unmatched SKUs.
@@ -60,22 +60,11 @@ A demo B2B construction-materials marketplace. All data is in-memory — refresh
 - **Notifications bell** — dropdown with unread badge. Auto-fires on PO approval/denial, approval requests, vendor quote responses. Pre-seeded with *back in stock* and *price drop* alerts. Click to deep-link.
 - **Sticky black header** — utility strip + main bar + nav strip stick together with backdrop blur and shadow.
 
-### Mobile-first updates (most recent pass)
-
-- **Hamburger drawer** on mobile — slides in from the right with full nav, account block, and role-switch toggle. Header collapses to logo + cart + bell + menu only.
-- Search bar moves to its own full-width row below the header on mobile.
-- Tables → card lists on `<md` for: Orders, Quotes, QuoteDetail items, ProjectDetail orders, Approvals decided, SellerDashboard, SellerAnalytics top SKUs, CompareVendors, ProductDetail "other vendors".
-- ProductDetail mobile: image emoji scales down (`text-7xl` → `text-[14rem]`), and a sticky bottom action bar with live total + qty stepper + **Add** button stays reachable while scrolling.
-- Touch targets sized for thumbs (44×44px minimum on icons/buttons).
-- Container padding scales: `px-4 sm:px-6`, `py-6 sm:py-10`.
-- Notification dropdown becomes a full-width panel on phones.
-
 ### Demo combos to try
 
 - **End-to-end procurement:** Sign in as Apex → bulk-paste 3 SKUs → checkout with PO + project link → *Submit for approval* → `/approvals` → approve → spend rises in project, credit deducts.
 - **RFQ flow:** Add to cart → Open RFQ → select 4 vendors → watch the bell → visit quote → accept lowest.
 - **Watchlist trigger:** Watch any item → set threshold above current price → green **Below threshold** pill lights up.
-- **Mobile drill:** Resize to 375px → hamburger → drawer → product detail → sticky bottom bar.
 - **Seller round-trip:** Switch to seller → create a new listing → switch back to buyer → find it in the catalog → buy it → switch to seller → see it appear in analytics.
 
 ## Deployment notes
